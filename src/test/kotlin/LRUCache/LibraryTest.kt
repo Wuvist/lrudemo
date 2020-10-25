@@ -39,4 +39,37 @@ class LibraryTest {
 
         assertEquals(-1, cache.get(2))
     }
+
+    @Test fun testFull() {
+        val cache = LRUCache(2)
+
+        cache.put(1, 1)
+        cache.put(2, 2)
+        assertEquals(1, cache.get(1))       // 返回  1
+        cache.put(3, 3)    // 该操作会使得关键字 2 作废
+        assertEquals(-1, cache.get(2))       // 返回 -1 (未找到)
+        cache.put(4, 4)    // 该操作会使得关键字 1 作废
+        assertEquals(-1, cache.get(1))       // 返回 -1 (未找到)
+        assertEquals(3, cache.get(3))       // 返回  3
+        assertEquals(4, cache.get(4))       // 返回  4
+    }
+
+    @Test fun testFull2() {
+        val cache = LRUCache(4)
+
+        cache.put(1, 1)
+        cache.put(2, 2)
+        cache.put(3, 3)
+        cache.put(4, 4)
+        cache.get(1)
+        cache.get(2)
+        cache.get(3)
+        cache.get(4)
+
+        cache.put(5, 5)
+        assertEquals(-1, cache.get(1))
+
+        cache.put(6, 6)
+        assertEquals(-1, cache.get(2))
+    }
 }
