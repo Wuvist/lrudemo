@@ -4,7 +4,8 @@
 package LRUCache
 
 class LRUCache(capacity: Int) {
-    var data = mutableMapOf<Int, Int>()
+    private var mapCapacity: Int = capacity
+    private var data = mutableMapOf<Int, Int>()
 
     fun get(key: Int): Int {
         val result = data[key]
@@ -16,6 +17,9 @@ class LRUCache(capacity: Int) {
     }
 
     fun put(key: Int, value: Int) {
+        if(data.count() == mapCapacity) {
+            data.remove(data.keys.first())
+        }
         data[key] = value
     }
 }
