@@ -4,11 +4,12 @@
 package LRUCache
 
 import kotlin.test.Test
-import kotlin.test.assertTrue
+import kotlin.test.assertEquals
 
 class LibraryTest {
-    @Test fun testSomeLibraryMethod() {
-        val classUnderTest = Library()
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'")
+    @Test fun getNotExist() {
+        val cache = LRUCache(1)
+
+        assertEquals(cache.get(1), -1)
     }
 }
