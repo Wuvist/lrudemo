@@ -4,12 +4,19 @@
 package LRUCache
 
 class LRUCache(capacity: Int) {
+    var data = mutableMapOf<Int, Int>()
+
     fun get(key: Int): Int {
+        val result = data[key]
+        if (result != null) {
+            return result
+        }
+
         return -1
     }
 
     fun put(key: Int, value: Int) {
-
+        data[key] = value
     }
 }
 

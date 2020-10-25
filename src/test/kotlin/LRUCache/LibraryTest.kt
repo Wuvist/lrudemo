@@ -10,6 +10,13 @@ class LibraryTest {
     @Test fun getNotExist() {
         val cache = LRUCache(1)
 
-        assertEquals(cache.get(1), -1)
+        assertEquals(-1, cache.get(1))
+    }
+
+    @Test fun testPut() {
+        val cache = LRUCache(1)
+        cache.put(1, 1);
+
+        assertEquals(1, cache.get(1))
     }
 }
